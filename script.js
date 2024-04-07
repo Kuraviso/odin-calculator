@@ -56,7 +56,15 @@ class Calculator {
       default:
         return;
     }
-    this.currentOutput = parseFloat(result).toFixed(10);
+    if (this.currentOutput.includes(".")) {
+      let roundedString = parseFloat(result).toFixed(10);
+
+      // Convert the rounded string back to a number
+      let roundedNumber = parseFloat(roundedString);
+      this.currentOutput = roundedNumber;
+    } else {
+      this.currentOutput = result;
+    }
     this.operation = undefined;
     this.previousOutput = "";
   }
@@ -139,7 +147,7 @@ document.addEventListener("keydown", (event) => {
     calculator.updateDisplay();
   }
   // Check if the key pressed is the Enter key (=)
-  else if (event.key === "Enter" || event.key === "=") {
+  else if (event.key === "Enter") {
     calculator.compute();
     calculator.updateDisplay();
   }
