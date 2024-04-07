@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Carrois Gothic SC", sans-serif;
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0091ad;
+}
+
+.calculator-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(100px, auto) repeat(5, 100px);
+  gap: 5px;
+}
+
+.calculator-container > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 0.5px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 50px;
+}
+
+.calculator-container > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.calculator-container .special {
+  background-color: rgba(12, 116, 137);
+  color: whitesmoke;
+}
+
+.calculator-container .special:hover {
+  background-color: #13505b;
+}
+
+.calculator-container .operator {
+  background-color: #fb8500;
+  color: whitesmoke;
+}
+
+.calculator-container .operator:hover {
+  background-color: orange;
+}
+
+.span {
+  grid-column: span 2;
+}
+
+.display {
+  grid-column: 1 / -1;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding-right: 20px;
+  border-radius: 20px;
+}
+
+.display .previous-output {
+  color: rgba(245, 245, 245, 0.75);
+  font-size: 1.5rem;
+}
+
+.display .current-output {
+  color: white;
+  font-size: 2.5rem;
+}
