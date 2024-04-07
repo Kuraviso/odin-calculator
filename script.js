@@ -46,12 +46,17 @@ class Calculator {
         result = prev * current;
         break;
       case "÷":
-        result = prev / current;
+        if (current != 0) {
+          result = prev / current;
+        } else {
+          alert("Cant devide by 0");
+          return;
+        }
         break;
       default:
         return;
     }
-    this.currentOutput = result;
+    this.currentOutput = parseFloat(result).toFixed(10);
     this.operation = undefined;
     this.previousOutput = "";
   }
