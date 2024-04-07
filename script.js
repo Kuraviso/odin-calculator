@@ -57,10 +57,9 @@ class Calculator {
         return;
     }
     if (this.currentOutput.includes(".")) {
-      let roundedString = parseFloat(result).toFixed(10);
+      const roundedString = parseFloat(result).toFixed(10);
 
-      // Convert the rounded string back to a number
-      let roundedNumber = parseFloat(roundedString);
+      const roundedNumber = parseFloat(roundedString);
       this.currentOutput = roundedNumber;
     } else {
       this.currentOutput = result;
@@ -147,7 +146,7 @@ document.addEventListener("keydown", (event) => {
     calculator.updateDisplay();
   }
   // Check if the key pressed is the Enter key (=)
-  else if (event.key === "Enter") {
+  else if (event.key === "=") {
     calculator.compute();
     calculator.updateDisplay();
   }
