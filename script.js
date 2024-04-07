@@ -56,14 +56,8 @@ class Calculator {
       default:
         return;
     }
-    if (this.currentOutput.includes(".")) {
-      const roundedString = parseFloat(result).toFixed(10);
 
-      const roundedNumber = parseFloat(roundedString);
-      this.currentOutput = roundedNumber;
-    } else {
-      this.currentOutput = result;
-    }
+    this.currentOutput = Math.round(result * 10000) / 10000;
     this.operation = undefined;
     this.previousOutput = "";
   }
@@ -145,8 +139,14 @@ document.addEventListener("keydown", (event) => {
     calculator.chooseOperation(newKey);
     calculator.updateDisplay();
   }
-  // Check if the key pressed is the Enter key (=)
+  // Check if the key pressed is the equals key (=)
   else if (event.key === "=") {
+    calculator.compute();
+    calculator.updateDisplay();
+  }
+  //Check if the key pressed is the enter key
+  else if (event.key === "Enter") {
+    event.preventDefault();
     calculator.compute();
     calculator.updateDisplay();
   }
