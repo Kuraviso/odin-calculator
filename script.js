@@ -104,3 +104,48 @@ deleteButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+document.addEventListener("keydown", (event) => {
+  // Check if the key pressed is a number (0-9) or decimal point (.)
+  if (!isNaN(event.key) || event.key === ".") {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay();
+  }
+  // Check if the key pressed is an operator (+, -, *, /)
+  else if (["+", "-", "*", "/"].includes(event.key)) {
+    let newKey;
+    switch (event.key) {
+      case "+":
+        newKey = "+";
+        break;
+      case "-":
+        newKey = "−";
+        break;
+      case "*":
+        newKey = "×";
+        break;
+      case "/":
+        newKey = "÷";
+        break;
+      default:
+        return;
+    }
+    calculator.chooseOperation(newKey);
+    calculator.updateDisplay();
+  }
+  // Check if the key pressed is the Enter key (=)
+  else if (event.key === "Enter" || event.key === "=") {
+    calculator.compute();
+    calculator.updateDisplay();
+  }
+  // Check if the key pressed is the Escape key (AC)
+  else if (event.key === "Escape") {
+    calculator.clear();
+    calculator.updateDisplay();
+  }
+  // Check if the key pressed is the Backspace key (DEL)
+  else if (event.key === "Backspace") {
+    calculator.delete();
+    calculator.updateDisplay();
+  }
+});
